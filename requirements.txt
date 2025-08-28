@@ -1,0 +1,8 @@
+python-telegram-bot
+google-generativeai
+sentence-transformers
+supabase
+python-dotenv
+nltk
+asyncio
+logging
