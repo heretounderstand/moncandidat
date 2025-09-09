@@ -6,3 +6,4 @@ python-dotenv
 nltk
 asyncio
 logging
+flask
