@@ -1,5 +1,4 @@
 import logging
-import os
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from flask import Flask, request, Response
@@ -7,7 +6,7 @@ import asyncio
 import threading
 import queue
 import time
-from config import TELEGRAM_BOT_TOKEN, WELCOME_MESSAGE, HELP_MESSAGE, ERROR_MESSAGE, WEBHOOK_URL
+from config import TELEGRAM_BOT_TOKEN, WELCOME_MESSAGE, HELP_MESSAGE, ERROR_MESSAGE, PORT, WEBHOOK_URL
 from database import Database
 from search_engine import SearchEngine
 from gemini_client import GeminiClient
@@ -308,7 +307,7 @@ def initialize_bot():
         return False
 
 def main():
-    """Fonction principale"""
+    """Fonction principale pour le développement"""
     try:
         print("🤖 Démarrage du bot d'élections...")
         
@@ -316,12 +315,13 @@ def main():
         if not initialize_bot():
             return
         
-        # Lancer Flask
-        port = int(os.environ.get('PORT', 5000))
+        # Lancer Flask en mode développement
+        port = PORT
         host = '0.0.0.0'
         
         print(f"🚀 Démarrage du serveur Flask sur {host}:{port}")
-        app.run(host=host, port=port, debug=False, threaded=True)
+        print("⚠️  Serveur de développement - Utilisez Gunicorn pour la production")
+        app.run(host=host, port=port, debug=True, threaded=True)
         
     except KeyboardInterrupt:
         print("\n🛑 Arrêt du bot demandé par l'utilisateur")
