@@ -7,3 +7,4 @@ nltk
 asyncio
 logging
 flask
+gunicorn
