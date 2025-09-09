@@ -49,4 +49,7 @@ HELP_MESSAGE = """
 N'hésite pas à me poser tes questions !
 """
 
+
 ERROR_MESSAGE = "Désolé, j'ai rencontré un problème. Peux-tu reformuler ta question ?"
+
+WEBHOOK_URL = os.environ.get('WEBHOOK_URL')
